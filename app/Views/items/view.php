@@ -1,0 +1,215 @@
+<?=$this->extend('layout/default'); ?>
+
+<?=$this->section('css'); ?>
+<style>
+    #txtArea{
+        resize:none;
+        border: none;
+        background:transparent;
+    }
+</style>
+<?=$this->endSection(); ?>
+
+<?=$this->section('content'); ?>
+
+				<div class="container-fluid p-0">
+
+					<div class="mb-3">
+						<h1 class="h3 d-inline align-middle">Device No: GW-<?=$items->id?> </h1>
+						<a class="badge bg-success text-white ms-2"> <?=$items->operational_status?></a>
+					</div>
+					<div class="row">
+						<div class="col-md-4 col-xl-3">
+							<div class="card mb-3">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Item Details</h5>
+								</div>
+								<div class="card-body ">
+									<img src="http://192.168.2.250:8081/itms2/public/img/avatars/device.jpg" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+									<h5 class="card-title mb-0">Item</h5>
+									<div class="text-muted mb-2"><?=$items->item?></div>
+
+								</div>
+								
+                                
+								<hr class="my-0" />
+								<div class="card-body">
+									<h5 class="h6 card-title">Description</h5>
+									<ul class="list-unstyled mb-0">
+										<li class="mb-1"><span data-feather="list" class="feather-sm me-1"></span> <?=$items->description?></li>
+									</ul>
+								</div>
+
+								<hr class="my-0" />
+								<div class="card-body">
+									<h5 class="h6 card-title">Serial #</h5>
+									<ul class="list-unstyled mb-0">
+										<li class="mb-1"><span data-feather="list" class="feather-sm me-1"></span> <?=$items->asset_no?></li>
+									</ul>
+								</div>
+								<hr class="my-0" />
+								<div class="card-body">
+									<h5 class="h6 card-title">Allocation</h5>
+									<ul class="list-unstyled mb-0">
+										<li class="mb-1"><span data-feather="map-pin" class="feather-sm me-1"></span> <?=$items->branch?></li>
+									</ul>
+								</div>
+                                <hr class="my-0" />
+								<div class="card-body">
+									<h5 class="h6 card-title">PO Details</h5>
+									<ul class="list-unstyled mb-0">
+                                      <li class="mb-1">Date Acquired: <?=$items->date_acquired?></li>
+										<li class="mb-1">PO Number: <?=$items->doc_reference_no?></li>
+                                        <li class="mb-1">DR Number: <?=$items->dr_no?></li>
+                                        
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						
+
+						<div class="col-md-8 col-xl-9">
+						<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">SPECIFICATIONS</h5>
+								</div>
+								<div class="card-body h-100">
+									<table class="table table-bordred">
+										<thead class="bg-dark text-light">
+											<th width="30%">NAME</th>
+											<th width="70%">VALUE</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Device ID</td>
+												<td>B949E744-2D42-4B68-A934-BE892D159025</td>
+											</tr>
+											<tr>
+												<td>Device Name</td>
+												<td>DESKTOP-BMJRCTB</td>
+											</tr>
+											<tr>
+												<td>Processor</td>
+												<td>Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz   3.60 GHz</td>
+											</tr>
+											<tr>
+												<td>Installed RAM</td>
+												<td>8.00 GB (7.84 GB usable)</td>
+											</tr>
+											<tr>
+												<td>Storage</td>
+												<td>1TB HDD + 128 SSD</td>
+											</tr>
+											<tr>
+												<td>Operating System</td>
+												<td>Windows 10 Pro, 64-bit v20H2</td>
+											</tr>
+											<tr>
+												<td>OS Build</td>
+												<td>19042.1165</td>
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+								
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">USER DETAILS</h5>
+								</div>
+								<div class="card-body h-100">
+									<table class="table table-bordred">
+										<thead class="bg-dark text-light">
+											<th width="30%">NAME</th>
+											<th  width="70%">VALUE</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Assigned To</td>
+												<td>Jun Canares</td>
+											</tr>
+											<tr>
+												<td>Department</td>
+												<td>IT</td>
+											</tr>
+											<tr>
+												<td>Use</td>
+												<td>Office use</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								
+							</div>
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Repair History</h5>
+								</div>
+								<div class="card-body h-100">
+									<div class="d-flex align-items-start">
+									<table class="table table-bordred">
+										<thead class="bg-dark text-light">
+											<th>DATE</th>
+											<th>DIAGNOSE</th>
+											<th>REMARKS</th>
+										</thead>
+										<tbody>
+											
+											<tr>
+												<td>09-10-2021</td>
+												<td>No Display and no Power</td>
+												<td>done fixing the problem because of the flex not tighten install</td>
+											</tr>
+										</tbody>
+									</table>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Remarks</h5>
+								</div>
+								<div class="card-body h-100">
+									<div class="d-flex align-items-start">
+										<div class="flex-grow-1">
+											<small class="float-end text-navy">22hrs ago</small>
+											<strong>Junell Dosdos</strong> posted on <strong>September 09, 2021</strong><br />
+											<small class="text-muted">Today 7:21 pm</small>
+
+											<div class="border text-sm text-muted p-2 mt-1">
+                                                <?=$items->remarks?>
+											</div>
+										</div>
+									</div>
+
+                                    <hr />
+									<div class="d-flex align-items-start">
+										<div class="flex-grow-1">
+											<small class="float-end text-navy">16hrs ago</small>
+											<strong>Jericho Vivas</strong> posted on <strong>September 10, 2021</strong><br />
+											<small class="text-muted">Today 12:10 pm</small>
+
+											<div class="border text-sm text-muted p-2 mt-1">
+												New Allocation of Item used by Charlie Sanipa
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							
+						</div>
+						
+					</div>
+
+				</div>
+
+
+<?=$this->endSection(); ?>
+
