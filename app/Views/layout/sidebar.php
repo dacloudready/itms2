@@ -41,23 +41,23 @@
                 Entry
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('#');?>">
-                    <i class="align-middle" data-feather="plus"></i> <span class="align-middle">New Request</span>
+                <a class="sidebar-link" href="<?=base_url('/add-request');?>">
+                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">New Request</span>
                  </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="<?=base_url('#');?>">
-                    <i class="align-middle" data-feather="plus"></i> <span class="align-middle">New Task</span>
+                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">New Task</span>
                  </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="<?=base_url('/add-inventory');?>">
-                    <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Add to Inventory</span>
+                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">Add to Inventory</span>
                  </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="<?=base_url('#');?>">
-                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Receive Item</span>
+                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">Receive Item</span>
                  </a>
             </li>
 

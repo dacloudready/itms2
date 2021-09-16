@@ -9,7 +9,8 @@ use App\Models\ItemsModel;
 
 class InventoryController extends BaseController
 {
-	// add items to inventory
+
+	// use this function to check if serial# is existing every time the user
 	public function verifySerialNo()
 	{
 		if( $this->request->getPost() ){
@@ -23,7 +24,7 @@ class InventoryController extends BaseController
 				}else{
 					$message = "serial_empty";
 				}
-				return json_encode($message);
+				return $message;
 
 				// $device = new DevicesModel();
 				// $post_data = [
@@ -32,7 +33,6 @@ class InventoryController extends BaseController
 				// $device->insert($post_data);
 				// session()->setFlashdata('success','Item added successfully!');
 				// return redirect()->to('/add-inventory');
-
 				//return $serialno;
 
 			} catch (\Throwable $th) {
@@ -45,19 +45,26 @@ class InventoryController extends BaseController
 		
 	}
 
+	// add items to inventory
 	public function AddInvItem()
 	{
 		if( $this->request->getVar('serialno') )
 		{
-			$device = new DevicesModel();
-
-			$post_data = [
-				'dev_serial'	=>	$this->request->getVar('serialno')
-			];
+			try {
+				$device = new DevicesModel();
+				$post_data = [
+					'dev_serial'	=>	$this->request->getVar('serialno')
+					// add more fields here...
+				];
 			
-			$device->insert($post_data);
-			session()->setFlashdata('success','Item added successfully!');
-			return redirect()->to('/add-inventory');
+				$device->insert($post_data);
+				session()->setFlashdata('success','Item added successfully!');
+				return redirect()->to('/add-inventory');
+			} catch (\Throwable $th) {
+				//throw $th;
+				die($th->getMessage());
+			}
+			
 		}
 		return view('items/add-inventory');
 	}

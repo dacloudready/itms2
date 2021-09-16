@@ -77,37 +77,36 @@
 								<div class="card-body h-100">
 									<table class="table table-bordred">
 										<thead class="bg-dark text-light">
-											<th width="30%">NAME</th>
-											<th width="70%">VALUE</th>
+											<th colspan="2" >DETAILS</th>
 										</thead>
 										<tbody>
 											<tr>
-												<td>Device ID</td>
-												<td>B949E744-2D42-4B68-A934-BE892D159025</td>
+												<td width="30%"><strong>Device ID:</strong></td>
+												<td width="70%"></td>
 											</tr>
 											<tr>
-												<td>Device Name</td>
-												<td>DESKTOP-BMJRCTB</td>
+												<td><strong>Device Name:</strong></td>
+												<td></td>
 											</tr>
 											<tr>
-												<td>Processor</td>
-												<td>Intel(R) Core(TM) i3-10100 CPU @ 3.60GHz   3.60 GHz</td>
+												<td><strong>Processor:</strong></td>
+												<td></td>
 											</tr>
 											<tr>
-												<td>Installed RAM</td>
-												<td>8.00 GB (7.84 GB usable)</td>
+												<td><strong>Installed RAM:</strong></td>
+												<td></td>
 											</tr>
 											<tr>
-												<td>Storage</td>
-												<td>1TB HDD + 128 SSD</td>
+												<td><strong>Storage:</strong></td>
+												<td></td>
 											</tr>
 											<tr>
-												<td>Operating System</td>
-												<td>Windows 10 Pro, 64-bit v20H2</td>
+												<td><strong>Operating System:</strong></td>
+												<td></td>
 											</tr>
 											<tr>
-												<td>OS Build</td>
-												<td>19042.1165</td>
+												<td><strong>OS Build:</strong></td>
+												<td></td>
 											</tr>
 											
 										</tbody>
@@ -118,26 +117,26 @@
 
 							<div class="card">
 								<div class="card-header">
-									<h5 class="card-title mb-0">USER DETAILS</h5>
+									<h5 class="card-title mb-0">USER</h5>
 								</div>
 								<div class="card-body h-100">
 									<table class="table table-bordred">
 										<thead class="bg-dark text-light">
-											<th width="30%">NAME</th>
-											<th  width="70%">VALUE</th>
+											<th>DETAILS</th>
+											<th>VALUE</th>
 										</thead>
 										<tbody>
 											<tr>
-												<td>Assigned To</td>
-												<td>Jun Canares</td>
+												<td width="30%"><strong>Assigned To:</strong></td>
+												<td width="70%"></td>
 											</tr>
 											<tr>
-												<td>Department</td>
-												<td>IT</td>
+												<td><strong>Department:</strong></td>
+												<td></td>
 											</tr>
 											<tr>
-												<td>Use</td>
-												<td>Office use</td>
+												<td><strong>Use:</strong></td>
+												<td></td>
 											</tr>
 										</tbody>
 									</table>
@@ -145,7 +144,7 @@
 								
 							</div>
 
-							<div class="card">
+							<!--<div class="card">
 								<div class="card-header">
 									<h5 class="card-title mb-0">Repair History</h5>
 								</div>
@@ -202,7 +201,7 @@
 									</div>
 								</div>
 								
-							</div>
+							</div>-->
 							
 						</div>
 						

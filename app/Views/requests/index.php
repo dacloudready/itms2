@@ -30,7 +30,7 @@
 						<?php foreach($requests as $request):?>
 							<tr>
 								<td class=""><a href="<?=base_url('/request-view/'.$request->id);?>"><?=$request->id;?></a></td>
-								<td><?=date_format(date_create($request->request_date),"m/d/Y H:i A");?></td>
+								<td><?=date_format(date_create($request->request_date),"m/d/Y");?></td>
 								<td><?=$request->requestor;?></td>
 								<td><?=$request->description;?></td>
 								<td><?=$request->subject;?></td>
@@ -49,7 +49,9 @@
 <?=$this->section('js'); ?>
 <script>
 	$(document).ready( function () {
-    	$('#rqTable').DataTable();
+    	$('#rqTable').DataTable({
+			"order": [ 0, "desc" ]
+		});
 	});
 </script>
 

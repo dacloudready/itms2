@@ -49,8 +49,14 @@ $routes->post('/verify-serial','InventoryController::verifySerialNo');
 
 
 // Request Controller
+$routes->get('/add-request','RequestController::AddRequest');
 $routes->get('/request-view/(:num)','RequestController::view/$1');
 $routes->get('/request-print/(:num)','RequestController::print/$1');
+
+// Comments Controller
+$routes->post('/add-comment', 'CommentsController::add_comment');
+
+
 // Auth Controller
 $routes->post('/login', 'UserAuthController::login');
 

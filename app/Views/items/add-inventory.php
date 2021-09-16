@@ -54,7 +54,7 @@
                     </div> -->
                 </div>
 
-                <form method="POST" id="frmAddInventory">  
+                <form method="POST" id="frmAddInventory" action="<?=base_url('add-inventory')?>">  
                     <div class="row">
                         <div class="col-lg-6">
                             <table class="table">
@@ -143,14 +143,14 @@
                         </div>
                     </div>
                     <hr>
-                </form>
+               
                     <div class="px-2 d-flex">
                         <div class="flex-grow-1 "></div>
                         <div class="px-2">
                             <button class="btn btn-md btn-success align-middle" id="btnSubmit"><i class="align-middle" data-feather="save"></i> SUBMIT</button>
                         </div>
                     </div>
-               
+                </form>
 			</div> 
            
 		</div>
@@ -158,64 +158,3 @@
 </div>
 <?=$this->endSection(); ?>
 
-<?=$this->section('js'); ?>
-    <script>
-        // $(document).ready( function () {
-        //     $('#myTable').DataTable();
-        //     $('.devInput').prop('disabled', 'disabled');
-        //     $('#txtserialno').on('keypress', function(e){
-        //         if(e.keyCode=='13'){
-        //             let url = "<?=base_url('/verify-serial'); ?>";
-        //             let form_input = $('#frmAddInventory').serialize();
-        //             $.post(url, form_input, function(data, status){
-        //                 // if found, enable txtboxes 
-        //                 let parse_data = JSON.parse(data).toString();
-        //                 if(parse_data == "serial_found")
-        //                 {
-        //                     //enable texboxes
-        //                     $('#serial_error').css('display', 'none');
-        //                     //alert('enable textboxes');
-        //                     $('.devInput').prop('disabled', '');
-        //                 }
-        //                 else
-        //                 {
-        //                     // show error..
-        //                     $('#serial_error').css('display', 'inline');
-        //                     $('.devInput').prop('disabled', 'disabled');
-        //                 }
-        //             }); // end post
-        //         }// end if
-        //     });
-
-
-        //     $('#btnSubmit').on('click', function(){
-        //         $('#frmAddInventory').submit();
-        //     });
-        // });
-                
-        function init(){
-            //document.querySelector('.devInput').setAttribute('disabled', 'disabled');
-            document.querySelectorAll('.devInput').forEach(item => item.setAttribute('disabled', 'disabled'));
-        }
-
-        let txtSerialNo = document.querySelector('#txtserialno');
-        txtSerialNo.addEventListener('keypress', function(e){
-            if(e.keyCode == 13){
-                let serialno = txtSerialNo.value;
-                let httprequest = new XMLHttpRequest();
-                
-                let url = "<?=base_url('/verify-serial'); ?>";
-                httprequest.open('POST', url, true);
-                httprequest.send();
-
-                httprequest.onreadystatechange = function() {
-                    if (httprequest.readyState === 4) {
-                        console.log(httprequest.response);
-                    }
-                }
-            }
-        });
-
-        init();
-    </script>
-<?=$this->endSection(); ?>

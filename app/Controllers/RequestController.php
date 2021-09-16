@@ -55,5 +55,8 @@ class RequestController extends BaseController
 	}
 
 
-
+	public function AddRequest()
+	{
+		return view('requests/add');
+	}
 }

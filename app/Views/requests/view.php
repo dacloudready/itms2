@@ -23,7 +23,7 @@
                         <a href="#"><i class="align-middle" data-feather="edit"></i></a>
                     </div>
                     <div class="px-2">
-                        <a href="" onclick="printDiv()"><i class="align-middle" data-feather="printer"></i></a>
+                        <a href="#" id="btnPrintDiv"><i class="align-middle" data-feather="printer"></i></a>
                     </div>
                     <div class="px-2">
                         <a href="#"><i class="align-middle" data-feather="check-square"></i></a>
@@ -89,10 +89,10 @@
                         <p><strong> NOTES:</strong></p>
                     </div>
                     <div class="px-2">
-                        <a href="#" alt-text="Click to add new notes."><i class="align-middle" data-feather="file-plus"></i></a>
+                        <a  alt-text="Click to add new notes." id="addNotes"><i class="align-middle" data-feather="file-plus"></i></a>
                     </div>
                 </div>
-                <table class="table table-bordred">
+                <table class="table table-bordred" id="tblNotes">
                     <thead class="bg-dark text-light">
                         <th width="15%">DATE</th>
                         <th width="15%">USER</th>
@@ -189,7 +189,7 @@
         <div class="col-lg-12">
             <table class="table table-bordered">
                 <tr>
-                    <td colspan="3"><strong>REQUEST#:<?=$request->id?></strong></td>
+                    <td colspan="3" ><strong>REQUEST#:<?=$request->id?></strong></td>
                 </tr>
                 <tr>
                     <td style="width:50%">
@@ -242,20 +242,95 @@
         </div>
     </div>
 </div>
-   <script type="text/javascript">
-        function printDiv() {
-                var divContents = document.getElementById("print_preview").innerHTML;
-                var app_css = document.getElementById("app_css").href;
-                var a = window.open('', '', 'height=1000, width=1000');
-                a.document.write('<html>');
-                a.document.write('<head><link href="'+app_css+'" rel="stylesheet"></head');
-                a.document.write('<body style="background:white"> <br>');
-                a.document.write(divContents);
-                a.document.write('</body></html>');
-                a.document.close();
-                a.print();
-        }
-    </script>
+
+
 <?=$this->endSection(); ?>
 
 
+<?=$this->section('js');?>
+<script type="text/javascript">
+
+   $(document).ready(function(){
+
+        // =================================
+        // methods, functions and declations
+        // =================================
+
+       const printDiv = function(){
+            var divContents = document.getElementById("print_preview").innerHTML;
+            var app_css = document.getElementById("app_css").href;
+            var a = window.open('', '', 'height=1000, width=1000');
+            a.document.write('<html>');
+            a.document.write('<head><link href="'+app_css+'" rel="stylesheet"></head');
+            a.document.write('<body style="background:white"> <br>');
+            a.document.write(divContents);
+            a.document.write('</body></html>');
+            a.document.close();
+            a.print();
+       }
+
+        let newRow = '';
+        let objTxtInput = '';
+        let txtReqID = '';
+        const addNewRow = function(){
+            const objTblNotes =  $('#tblNotes tr:last');
+            const newTblRow = "<tr>" +
+                                "<td><?=date('Y-m-d H:i:s');?></td>" + 
+                                "<td>me</td>" +
+                                "<td><input type='hidden' name='requestid' id='requestid' value='<?=$request->id?>' /><input class='form-control' type='text' name='note' id='txtNote' /><i class='align-middle' data-feather='file-plus' id='btnRemtblRow'></i></td>" +
+                              "</tr>";
+                    objTblNotes.after(newTblRow);
+                    objTxtInput = $('#txtNote');
+                    txtReqID = $('#requestid').val();
+                    newRow = true;
+        }
+
+        const addNewNote = function(){
+
+            let url = "<?=base_url('/add-comment');?>";
+            $.post(url, {'note': objTxtInput.val(), 'requestid':  txtReqID }, function(){
+                 objTxtInput.removeAttr('id');
+
+                 // get post here...
+            });
+           
+            newRow = false;
+        }
+
+         // =================================
+        //  EVENT LISTENERS
+        // =================================
+        $('#btnPrintDiv').on('click', function(){
+            printDiv();
+       });
+
+        $('#addNotes').on('click', function(){
+            // kung newRow == false, add new row everytime magclick sa button
+            // send post data to Comment controller when user pressed Enter key
+            // set newRow to false
+            // remove id attribute para maka add input box na dili ma conflict sa previous input
+            // set newRow to false para sa taas nga validation
+            if(newRow != true){
+                addNewRow();
+                objTxtInput.focus();
+                objTxtInput.keyup(function(e){
+                    if(e.keyCode == 13){ 
+                        // add new not method here...
+                        addNewNote();
+                    }
+                });
+            }
+        });
+
+        
+       
+
+        
+
+
+
+
+   });
+        
+    </script>
+<?=$this->endSection(); ?>

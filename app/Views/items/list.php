@@ -38,28 +38,10 @@
                             <td><?=$row->dr_no;?></td>
                             <td><?=$row->doc_reference_no;?></td>
                             <td><?=$row->asset_no;?></td>
-                           
                             <td><?=$row->model_no;?></td>
                             <td><?=$row->branch?></td>
                             <td><?=$row->remarks;?></td>
-                            <td><?php 			
-                                    switch($row->operational_status)
-                                    {
-                                        case 'Functional': $bg = 'bg-default'; break;
-                                        case 'For Repair': $bg = 'bg-danger'; break;
-                                        case 'Replacement': $bg = 'bg-default'; break;
-                                        case 'For Deployment': $bg = 'bg-warning'; break;
-                                        case 'For Delivery': $bg = 'bg-warning'; break;
-                                        case 'Used': $bg = 'bg-success'; break;
-                                        case 'Deployed': $bg = 'bg-danger'; break;
-                                        case 'Delivered': $bg = 'bg-primary'; break;
-                                        case 'Unrepairable': $bg = 'bg-danger'; break;
-                                        case 'Available': $bg = 'bg-info'; break;
-                                        default: $bg = 'bg-info';
-                                    }
-                                    echo "<span class='badge {$bg}'>{$row->operational_status}</span><br>";
-                                ?>
-                        
+                            <td><?php set_status($row->operational_status)?>
                         </td>
                         </tr>
                         <?php endforeach; ?>
