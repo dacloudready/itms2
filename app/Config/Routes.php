@@ -38,21 +38,19 @@ $routes->get('/login', 'Home::login');
 $routes->get('/logout', 'Home::logout');
 
 // Items Controller
-$routes->get('/item-list', 'ItemsController::list');
+$routes->get('/item-list', 'ItemsController::index');
 $routes->get('/item-inventory', 'ItemsController::inventory'); // for validation
 $routes->get('/item-view/(:num)','ItemsController::view/$1');
 
-// Inventory Controller
-$routes->get('/add-inventory','InventoryController::AddInvItem'); 
-$routes->post('/add-inventory','InventoryController::AddInvItem');
-$routes->post('/verify-serial','InventoryController::verifySerialNo');
+// Orders Controller
+$routes->get('/order-list', 'OrdersController::index'); 
 
 
 // Request Controller
 $routes->get('/add-request','RequestController::AddRequest');
-$routes->get('/request-view/(:num)','RequestController::view/$1');
-$routes->get('/request-print/(:num)','RequestController::print/$1');
-
+$routes->get('/view-request/(:num)','RequestController::view/$1');
+$routes->get('/print-request/(:num)','RequestController::print/$1');
+$routes->post('/add-request/save', 'RequestController::save');
 // Comments Controller
 $routes->post('/add-comment', 'CommentsController::add_comment');
 

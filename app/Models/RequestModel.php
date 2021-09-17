@@ -14,7 +14,7 @@ class RequestModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['requestor','branch','department','category','priority','description','search_tag','status'];
 
 	// Dates
 	protected $useTimestamps        = false;

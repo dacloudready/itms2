@@ -16,17 +16,14 @@ class ItemsController extends BaseController
 		helper('status');
 	}
 
-	public function index()
-	{
-		//
-	}
+	
 
 	// list all items 
-	public function list()
+	public function index()
 	{
 		$items = new ItemsModel();
 		$data['items'] = $items->findAll();
-		return view('items/list', $data);
+		return view('items/index', $data);
 	}
 
 	// view single item details

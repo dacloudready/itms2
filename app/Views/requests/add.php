@@ -11,13 +11,22 @@
         padding: .50rem; 
     }
 
-    .alert{
+    .alert-success{
         color: #155724;
         background-color: #d4edda;
         border-color: #c3e6cb;
         padding:15px;
         border-radius: 3px;
     }
+
+    .alert-error{
+        color: #842029;
+        background-color: #f8d7da;
+        border-color: #f5c2c7;
+        padding:15px;
+        border-radius: 3px;
+    }
+
 
     .alert-x {
         float:right;
@@ -30,15 +39,12 @@
         display: none;
     }
 </style>
+
+</script>
 <?=$this->endSection(); ?>
 
 <?=$this->section('content'); ?>
-<?php if( session()->getFlashdata('success') ): ?>
-    <div class="alert alert-dismissible fade show mb-3" role="alert">
-        <?=session()->getFlashdata('success');?>
-        <span data-bs-dismiss="alert" aria-label="Close" class="alert-x">&times;</span>
-    </div>
-<?php endif;?>
+    <div id="alert_note"></div>
 <h1 class="h3 mb-3">Add Request</h1>
 <div class="row">
 	<div class="col-lg-12 col-sm-12">
@@ -49,20 +55,16 @@
                     <div class="flex-grow-1 ">
                         <p><strong>Request Details</strong></p>
                     </div>
-                    <!-- <div class="px-2">
-                        <a href="#"><i class="align-middle" data-feather="edit"></i></a>
-                    </div> -->
                 </div>
-
-                <form method="POST" id="" action="#">  
+                <form method="POST" id="formRequest">  
                     <div class="row">
                         <div class="col-lg-6">
-                            <table class="table">
+                            <table class="table" id="tableRequest">
                                 <tbody>
                                     <tr>
                                         <td width="30%"><strong>Requested By:</strong></td>
                                         <td  width="70%">
-                                        <input type="text" name="requestor" class="form-control w-75"/>
+                                        <input type="text" id="requestor" name="requestor" class="form-control w-75"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -207,7 +209,7 @@
                                     <tr>
                                         <td><strong>Search Tag</strong></td>
                                         <td>
-                                             <input type="text" name="macaddr" id="txtmacaddr" class="form-control devInput"  />
+                                             <input type="text" name="search_tag" id="search_tag" class="form-control devInput"  />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -219,30 +221,54 @@
                     <div class="px-2 d-flex">
                         <div class="flex-grow-1 "></div>
                         <div class="px-2">
-                            <button class="btn btn-md btn-success align-middle" id="submit"><i class="align-middle" data-feather="save"></i> Save</button>
+                            <a class="btn btn-md btn-success align-middle" id="submit"><i class="align-middle" data-feather="save"></i> Save</a>
                         </div>
                     </div>
                 </form>
 			</div> 
-           
 		</div>
 	</div>
 </div>
-<script>
-$(document).ready(function(){
-    $("#submit").click(function(){
-        var link = window.location.hostname;
-        console.log("Hello world!"); 
-        /*$.post("demo_test_post",
-        {
-            name: "Donald Duck",
-            city: "Duckburg"
-        },
-        function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });*/
-    }); 
-});
-</script>
+
 <?=$this->endSection(); ?>
+
+<?=$this->section('js'); ?>
+<script>
+ $(document).ready(function() {
+
+    const alert_note = function(type, message){
+        let alert_color = "";
+
+        switch (type){
+            case 'error': alert_color = 'alert-error'; break;
+            case 'success': alert_color = 'alert-success'; break;
+            default:  alert_color = 'alert-primary';
+        }
+        
+        $("#alert_note").append("<div class='alert "+ alert_color + "' role='alert'>" + message + "</div><br>");
+    }
+
+
+    const AddNewRequest = function(){
+        let url = window.location.href + "/save";
+        let post_data = $('#formRequest').serialize();
+        $.post(url, post_data, function(data){
+            
+            if(data == 'true'){
+                  alert_note('success', 'Record Successful');
+            } else {
+                alert_note('error', 'Error Occured');
+            }
+
+            $("#tableRequest").load(location.href + "#tableRequest");
+           
+        });
+    }
+   
+    $("#submit").click(function(){
+        AddNewRequest();
+    }); 
+ });
+ </script>
+ <?=$this->endSection(); ?>
 

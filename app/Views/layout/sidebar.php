@@ -16,6 +16,13 @@
                  </a>
             </li>
 
+            <!-- ORDERS LIST -->
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="<?=base_url('/item-list');?>">
+                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Orders</span>
+                 </a>
+            </li>
+
             <!-- Item LIST -->
             <li class="sidebar-item">
                 <a class="sidebar-link" href="<?=base_url('/item-list');?>">

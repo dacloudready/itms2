@@ -89,7 +89,7 @@
                         <p><strong> NOTES:</strong></p>
                     </div>
                     <div class="px-2">
-                        <a  alt-text="Click to add new notes." id="addNotes"><i class="align-middle" data-feather="file-plus"></i></a>
+                        <a alt-text="Click to add new notes." id="addNotes"><i class="align-middle" data-feather="file-plus"></i></a>
                     </div>
                 </div>
                 <table class="table table-bordred" id="tblNotes">
@@ -99,6 +99,15 @@
                         <th width="70%">MESSAGE</th>
                     </thead>
                     <tbody>
+
+                        <?php if( count($comments) == 0 ): ?>
+                            <tr>
+                                <td colspan="6">
+                                   <center> No data available</center>
+                                </td>
+                            </tr>
+                        <?php endif;?>
+
                         <?php foreach($comments as $comment): ?>
                         <tr>
                             <td><?=$comment->date_performed;?></td>
@@ -138,6 +147,15 @@
                             <th>STATUS</th>
                         </thead>
                         <tbody>
+
+                        <?php if( count($orders) == 0 ): ?>
+                            <tr>
+                                <td colspan="6">
+                                   <center> No order data available</center>
+                                </td>
+                            </tr>
+                        <?php endif;?>
+
                             <?php foreach($orders as $order): ?>
                             <tr>
                                 <td><?=$order->po_number; ?></td>
@@ -251,7 +269,6 @@
 <script type="text/javascript">
 
    $(document).ready(function(){
-
         // =================================
         // methods, functions and declations
         // =================================
@@ -277,24 +294,25 @@
             const newTblRow = "<tr>" +
                                 "<td><?=date('Y-m-d H:i:s');?></td>" + 
                                 "<td>me</td>" +
-                                "<td><input type='hidden' name='requestid' id='requestid' value='<?=$request->id?>' /><input class='form-control' type='text' name='note' id='txtNote' /><i class='align-middle' data-feather='file-plus' id='btnRemtblRow'></i></td>" +
+                                "<td>" +
+                                    "<input type='hidden' name='requestid' id='requestid' value='<?=$request->id?>' />" + 
+                                    "<input class='form-control' type='text' name='note' id='txtNote' /> " +
+                                "</td>" +
                               "</tr>";
                     objTblNotes.after(newTblRow);
                     objTxtInput = $('#txtNote');
                     txtReqID = $('#requestid').val();
-                    newRow = true;
+
+            newRow = true;
         }
 
         const addNewNote = function(){
-
             let url = "<?=base_url('/add-comment');?>";
-            $.post(url, {'note': objTxtInput.val(), 'requestid':  txtReqID }, function(){
-                 objTxtInput.removeAttr('id');
-
-                 // get post here...
+            $.post(url, {'note': objTxtInput.val(), 'requestid':  txtReqID}, function(){
+                $("#tblNotes").load(location.href + " #tblNotes");
+                newRow = false;
             });
-           
-            newRow = false;
+            
         }
 
          // =================================
@@ -305,31 +323,16 @@
        });
 
         $('#addNotes').on('click', function(){
-            // kung newRow == false, add new row everytime magclick sa button
-            // send post data to Comment controller when user pressed Enter key
-            // set newRow to false
-            // remove id attribute para maka add input box na dili ma conflict sa previous input
-            // set newRow to false para sa taas nga validation
             if(newRow != true){
                 addNewRow();
                 objTxtInput.focus();
                 objTxtInput.keyup(function(e){
-                    if(e.keyCode == 13){ 
-                        // add new not method here...
-                        addNewNote();
+                    if(e.keyCode == 13 && objTxtInput.val().length !== 0){ 
+                         addNewNote(); 
                     }
                 });
             }
         });
-
-        
-       
-
-        
-
-
-
-
    });
         
     </script>
