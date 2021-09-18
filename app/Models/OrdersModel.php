@@ -14,6 +14,6 @@ class OrdersModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['po_number','po_date','company','delivery_address','supplier','po_items','total','remarks','req_no','status'];
 
 }

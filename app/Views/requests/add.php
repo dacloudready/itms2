@@ -64,7 +64,7 @@
                                     <tr>
                                         <td width="30%"><strong>Requested By:</strong></td>
                                         <td  width="70%">
-                                        <input type="text" id="requestor" name="requestor" class="form-control w-75"/>
+                                        <input type="text" id="requestor" name="requestor" class="form-control w-75" required/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -145,7 +145,7 @@
                                     <tr>
                                         <td><strong>Request:</strong></td>
                                         <td>
-                                         <select class="form-select" id="request" name="request">
+                                         <select class="form-select" id="subject" name="subject">
                                             <option value="Task">Task</option>
                                             <option value="Purchase">Purchase</option>
                                             <option value="Support">Support</option>
@@ -204,12 +204,12 @@
                                     </tr>
                                     <tr>
                                         <td valign="top"><strong>Description</strong></td>
-                                        <td><textarea name="description" id="description" rows="3" class="form-control"></textarea></td>
+                                        <td><textarea name="description" id="description" rows="3" class="form-control" required></textarea></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Search Tag</strong></td>
                                         <td>
-                                             <input type="text" name="search_tag" id="search_tag" class="form-control devInput"  />
+                                             <input type="text" name="search_tag" id="search_tag" class="form-control devInput"  required />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -252,21 +252,28 @@
     const AddNewRequest = function(){
         let url = window.location.href + "/save";
         let post_data = $('#formRequest').serialize();
-        $.post(url, post_data, function(data){
-            
-            if(data == 'true'){
-                  alert_note('success', 'Record Successful');
-            } else {
-                alert_note('error', 'Error Occured');
-            }
-
-            $("#tableRequest").load(location.href + "#tableRequest");
-           
-        });
+        
+        if(post_data != ''){
+            $.post(url, post_data, function(data){
+    
+                if(data == 'true'){
+                    alert_note('success', 'Record Successful');
+                } else {
+                    alert_note('error', 'Error Occured');
+                }
+            });
+        } else {
+            alert_note('error', 'Error Occured');
+        }
+       
+    
+          
+      
     }
    
     $("#submit").click(function(){
         AddNewRequest();
+        $("#formRequest").load(location.href + " #formRequest");
     }); 
  });
  </script>

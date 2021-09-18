@@ -23,7 +23,6 @@ class RequestController extends BaseController
 			$req = new RequestModel();
 			$data['request'] = $req->find($id);
 
-
 			$comment = new CommentsModel();
 			$data['comments'] = $comment->where('requestid', $data['request']->id)->FindAll();
 
@@ -60,13 +59,12 @@ class RequestController extends BaseController
 		$data['requestor'] = $this->request->getPost('requestor');
 		$data['branch']= $this->request->getPost('branch');
 		$data['department'] = $this->request->getPost('department');
-		$data['request'] = $this->request->getPost('request');
+		$data['subject'] = $this->request->getPost('subject');
 		$data['category'] = $this->request->getPost('category');
 		$data['priority'] = $this->request->getPost('priority');
 		$data['description'] = $this->request->getPost('description');
 		$data['search_tag'] = $this->request->getPost('search_tag');
 		$data['status'] = 'New';
-
 
 		if($data != null){
 			try {

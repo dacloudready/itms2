@@ -3,6 +3,8 @@
         <i class="hamburger align-self-center"></i>
     </a>
 
+    <input type="text" class="form-control" placeholder="Search">
+    
     <div class="navbar-collapse collapse">
         <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">

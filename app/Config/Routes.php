@@ -43,7 +43,7 @@ $routes->get('/item-inventory', 'ItemsController::inventory'); // for validation
 $routes->get('/item-view/(:num)','ItemsController::view/$1');
 
 // Orders Controller
-$routes->get('/order-list', 'OrdersController::index'); 
+$routes->get('/order-list', 'OrderController::index'); 
 
 
 // Request Controller

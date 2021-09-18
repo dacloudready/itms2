@@ -54,6 +54,27 @@ function set_status($status)
                     $bg = 'bg-info'; 
                     break;
 
+         // ORDER STATUS
+         case 'PO Created': 
+                    $bg = 'bg-secondary'; 
+                    break;
+
+        case 'Waiting for Availability': 
+                    $bg = 'bg-warning';
+                    break;
+
+        case 'Waiting for Delivery': 
+                    $bg = 'bg-success'; 
+                    break;
+
+        case 'Sending Docs to Suppier': 
+                    $bg = 'bg-danger'; 
+                    break;       
+        
+        case 'Closed': 
+            $bg = 'bg-sucess'; 
+            break; 
+
         default: $bg = 'bg-info';
 
     }
