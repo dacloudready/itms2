@@ -48,9 +48,14 @@ $routes->get('/order-list', 'OrderController::index');
 
 // Request Controller
 $routes->get('/add-request','RequestController::AddRequest');
+$routes->get('/add-task','RequestController::AddRequestTask');
+$routes->get('/task-list','RequestController::TaskList');
 $routes->get('/view-request/(:num)','RequestController::view/$1');
 $routes->get('/print-request/(:num)','RequestController::print/$1');
-$routes->post('/add-request/save', 'RequestController::save');
+$routes->post('/add-request', 'RequestController::save');
+$routes->post('/add-task', 'RequestController::save');
+$routes->get('/edit-request/(:num)', 'RequestController::EditRequest/$1');
+
 // Comments Controller
 $routes->post('/add-comment', 'CommentsController::add_comment');
 

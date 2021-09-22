@@ -20,7 +20,7 @@
                         <p class="h4 mb-4 text-muted"><strong>ID#<?="{$request->id}: {$request->subject} | {$request->category}"; ?></strong></p>
                     </div>
                     <div class="px-2">
-                        <a href="#"><i class="align-middle" data-feather="edit"></i></a>
+                        <a href="<?=base_url('edit-request/'.$request->id)?>"><i class="align-middle" data-feather="edit"></i></a>
                     </div>
                     <div class="px-2">
                         <a href="#" id="btnPrintDiv"><i class="align-middle" data-feather="printer"></i></a>
@@ -38,7 +38,7 @@
                     <tbody>
                         <tr>
                             <td width="20%"><strong>REQUESTED BY:</strong></td>
-                            <td width="80%"><?=$request->requestor;?></td>
+                            <td width="80%" id="txtRequestedBy"><?=$request->requestor;?></td>
                         </tr>
                         <tr>
                             <td><strong>DATE:</strong></td>
@@ -61,8 +61,25 @@
                         </tr>
 
                         <tr>
-                            <td><strong>STATUS</td>
-                            <td><?=set_status($request->status);?>
+                            <td><strong>STATUS:</strong></td>
+                            <td><?=set_status($request->status);?></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ORDER NO:</strong></td>
+                            <td>
+                                <?php if($orders != null) :?>  
+                                    <!-- <?php foreach($orders as $rows): ?>
+                                        <?= implode(array(",",$rows->po_number));?>
+                                    <?php endforeach;?> -->
+
+                                    
+                                     <?=implode(', ', array_map(function($orders) { return "<a>".$orders->po_number."</a>"; }, $orders));?>
+                                <?php else:?>
+                                    No Purchase Order
+                                <?php endif;?>
+
+                                <?php  //var_dump(); ?>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -122,59 +139,6 @@
         </div>
     </div>
 </div>
-
-<!-- PO ENTRY -->
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="px-2 d-flex">
-                    <div class="flex-grow-1 ">
-                        <p><strong> PURCHASE DETAILS:</strong></p>
-                    </div>
-                    <div class="px-2">
-                        <a href="#" alt="Click to add purchase details"><i class="align-middle" data-feather="file-plus"></i></a>
-                    </div>
-                </div>
-                <div style="overflow:auto; scroll:bottom">
-                    <table class="table table-bordred table-responsive">
-                        <thead class="bg-dark text-light">
-                            <th>PO#</th>
-                            <th>DATE</th>
-                            <th>VENDOR</th>
-                            <th>SHIP TO</th>
-                            <th>TOTAL</th>
-                            <th>STATUS</th>
-                        </thead>
-                        <tbody>
-
-                        <?php if( count($orders) == 0 ): ?>
-                            <tr>
-                                <td colspan="6">
-                                   <center> No order data available</center>
-                                </td>
-                            </tr>
-                        <?php endif;?>
-
-                            <?php foreach($orders as $order): ?>
-                            <tr>
-                                <td><?=$order->po_number; ?></td>
-                                <td><?=$order->po_date; ?></td>
-                                <td><?=$order->supplier; ?></td>
-                                <td><?=$order->delivery_address; ?></td>
-                                <td><?=number_format($order->total, 2); ?></td>
-                                <td><?=$order->status; ?></td>
-                            </tr>
-                            <?php endforeach; ?>
-                        
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

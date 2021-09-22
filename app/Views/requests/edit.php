@@ -45,7 +45,7 @@
 
 <?=$this->section('content'); ?>
     <div id="alert_note"></div>
-<h1 class="h3 mb-3">Add Request</h1>
+<h1 class="h3 mb-3">Edit Request # </h1>
 <div class="row">
 	<div class="col-lg-12 col-sm-12">
 		<div class="card card-default">
@@ -64,7 +64,7 @@
                                     <tr>
                                         <td width="30%"><strong>Requested By:</strong></td>
                                         <td  width="70%">
-                                        <input type="text" id="requestor" name="requestor" class="form-control w-75" required/>
+                                        <input type="text" id="requestor" name="requestor" class="form-control w-75" value="" required/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -87,8 +87,7 @@
                                                 <option value="MITSUBISHI-SUCAT">MITSUBISHI-SUCAT</option>
                                                 <option value="SUZUKI-PALAWAN">SUZUKI-PALAWAN</option>
                                                 <option value="SUZUKI-SANPABLO">SUZUKI-SANPABLO</option>
-                                                <option value="SUZUKI-SANPABLO">SUZUKI-SANPABLO</option>
-                                                <option value="SUZUKI-STO TOMAS">SUZUKI-STO TOMAS</option>
+                                                <option value="SUZUKI-ALAMINOS">SUZUKI-ALAMINOS</option>
                                                 <option value="FOTON-TALISAY">FOTON-TALISAY</option>
                                                 <option value="FUSO-LIPA">FUSO-LIPA</option>
                                                 <option value="HONDA-FAIRVIEW">HONDA-FAIRVIEW</option>
@@ -106,7 +105,6 @@
                                                 <option value="MG-BOHOL">MG-BOHOL</option>
                                                 <option value="KIA-MANDAUE">KIA-MANDAUE</option>
                                                 <option value="KIA-TALISAY">KIA-TALISAY</option>
-                                                <option value="KIA-STO TOMAS">KIA-STO TOMAS</option>
                                                 <option value="KIA-GORORDO">KIA-GORORDO</option>
                                                 <option value="KIA-SANPABLO">KIA-SANPABLO</option>
                                                 <option value="BMW-LAHUG">BMW-LAHUG</option>
@@ -252,7 +250,7 @@
 
 
     const AddNewRequest = function(){
-        let url = window.location.href;
+        let url = window.location.href + "/save";
         let post_data = $('#formRequest').serialize();
         
         if(post_data != ''){

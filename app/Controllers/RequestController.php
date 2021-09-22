@@ -52,6 +52,17 @@ class RequestController extends BaseController
 		return view('requests/add');
 	}
 
+	public function EditRequest($id)
+	{
+		$request = new RequestModel();
+		$data['request_id'] = $request->find($id);
+		$data['request'] = $request->where('id',$data['request_id']->id)->FindAll();
+
+		return view('requests/edit', $data);
+	}
+
+	
+
 	public function save()
 	{	
 		$requestmodel = new RequestModel();
@@ -76,5 +87,17 @@ class RequestController extends BaseController
 				return "false";
 			}
 		} 
+	}
+
+	public function AddRequestTask()
+	{
+		return view('task/add');
+	}
+
+	public function TaskList(){
+		$tasks = new RequestModel();
+		$data['tasks'] = $tasks->where('subject != "Purchase"')->findAll();
+
+		return view('task/index', $data);
 	}
 }

@@ -45,7 +45,7 @@
 
 <?=$this->section('content'); ?>
     <div id="alert_note"></div>
-<h1 class="h3 mb-3">Add Request</h1>
+<h1 class="h3 mb-3">Add Task</h1>
 <div class="row">
 	<div class="col-lg-12 col-sm-12">
 		<div class="card card-default">
@@ -53,7 +53,7 @@
                  
                 <div class="px-2 d-flex">
                     <div class="flex-grow-1 ">
-                        <p><strong>Request Details</strong></p>
+                        <p><strong>Task Details</strong></p>
                     </div>
                 </div>
                 <form method="POST" id="formRequest">  
@@ -145,16 +145,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><strong>Request:</strong></td>
+                                        <td></td>
                                         <td>
-                                         <select class="form-select" id="subject" name="subject">
-                                            <option value="Task">Task</option>
-                                            <option value="Purchase">Purchase</option>
-                                            <option value="Support">Support</option>
-                                            <option value="Project">Project</option>
-                                            <option value="Email Account">Email Account</option>
-                                            <option value="Item Deployment">Item Deployment</option>
-                                        </select>
+                                         <input type="hidden" name="subject" id="subject" value="Task">
                                         </td>
                                     </tr>
                                     <tr>
@@ -181,17 +174,6 @@
                                             </select>
                                         </td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td  width="30%"></td>
-                                        <td  width="70%"><div class="mb-4 p-1"></div></td>
-                                    </tr>
                                     <tr>
                                         <td><strong>Priority</strong></td>
                                         <td>
@@ -217,6 +199,8 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        
                     </div>
                     <hr>
                
@@ -260,6 +244,7 @@
     
                 if(data == 'true'){
                     alert_note('success', 'Record Successful');
+                    $("#formRequest").load(location.href + " #formRequest");
                 } else {
                     alert_note('error', 'Error Occured');
                 }
@@ -275,7 +260,7 @@
    
     $("#submit").click(function(){
         AddNewRequest();
-        $("#formRequest").load(location.href + " #formRequest");
+       
     }); 
  });
  </script>

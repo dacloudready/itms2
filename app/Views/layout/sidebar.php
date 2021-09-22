@@ -39,7 +39,7 @@
 
             <!-- TASK -->
             <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('#');?>">
+                <a class="sidebar-link" href="<?=base_url('/task-list');?>">
                     <i class="align-middle" data-feather="file"></i> <span class="align-middle">Task</span>
                  </a>
             </li>
@@ -53,7 +53,7 @@
                  </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('#');?>">
+                <a class="sidebar-link" href="<?=base_url('/add-task');?>">
                     <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">New Task</span>
                  </a>
             </li>

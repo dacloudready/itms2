@@ -25,7 +25,7 @@ class Home extends BaseController
 		// {
 			try {
 				$req = new RequestModel();
-				$data['requests'] = $req->where("status != 'Done'")->findAll();
+				$data['requests'] = $req->where("status != 'Done' AND po != 1 AND status != 'With PO' AND subject ='purchase'")->findAll();
 
 				return view('requests/index', $data);
 			} catch (\Throwable $th) {
