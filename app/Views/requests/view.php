@@ -26,7 +26,7 @@
                         <a href="#" id="btnPrintDiv"><i class="align-middle" data-feather="printer"></i></a>
                     </div>
                     <div class="px-2">
-                        <a href="#"><i class="align-middle" data-feather="check-square"></i></a>
+                        <a href="#"  data-bs-toggle="modal" data-bs-target="#MarkAsClose"><i class="align-middle" data-feather="check-square"></i></a>
                     </div>
                 </div>
 
@@ -63,6 +63,11 @@
                         <tr>
                             <td><strong>STATUS:</strong></td>
                             <td><?=set_status($request->status);?></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>PREPARED BY:</strong></td>
+                            <td><?=$request->addedby;?></td>
                         </tr>
                         <tr>
                             <td><strong>ORDER NO:</strong></td>
@@ -128,7 +133,7 @@
                         <?php foreach($comments as $comment): ?>
                         <tr>
                             <td><?=$comment->date_performed;?></td>
-                            <td>me</td>
+                            <td><?= getUserName($comment->userid);?></td>
                             <td><?=$comment->action;?></td>
                         </tr>
                         <?php endforeach ?>
@@ -140,7 +145,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="MarkAsClose" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -156,6 +161,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <div id="print_preview" class="d-none d-print-block" >
     <div class="row">
@@ -207,7 +213,7 @@
                         </tr>
 
                         <tr>
-                            <td><div style="height:20px;text-align:center">ROMEO JUNELL DOSDOS</div></td>
+                            <td><div style="height:20px;text-align:center"><?=getUserFullName($request->addedby);?></div></td>
                             <td><div style="height:20px;text-align:center">DAN LUTHER AVERGONZADO</div></td>
                             <td><div style="height:20px;text-align:center">ERAILE BRUAN</div></td>
                         </tr>
@@ -257,10 +263,10 @@
             const objTblNotes =  $('#tblNotes tr:last');
             const newTblRow = "<tr>" +
                                 "<td><?=date('Y-m-d H:i:s');?></td>" + 
-                                "<td>me</td>" +
+                                "<td> <input class='form-control' type='text' name='username' id='txtUserName' disabled='true' value='<?=session()->get('username');?>'/> </td>" + //optimize this code later</td>" +
                                 "<td>" +
-                                    "<input type='hidden' name='requestid' id='requestid' value='<?=$request->id?>' />" + 
-                                    "<input class='form-control' type='text' name='note' id='txtNote' /> " +
+                                    "<input type='hidden' name='requestid' id='requestid' value='<?=$request->id?>' />" +  //optimize this code later
+                                    "<input class='form-control' type='text' name='note' id='txtNote' /> " + 
                                 "</td>" +
                               "</tr>";
                     objTblNotes.after(newTblRow);

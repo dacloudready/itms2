@@ -32,7 +32,7 @@
                         <tr class="">
                             <td class=""><?=$row->id;?></a></td>
                             <td><a href=""><?=$row->po_number;?></a></td>
-                            <td><a href=""><?=$row->req_no;?></a></td>
+                            <td><a href="<?=base_url('/view-request/'.$row->req_no)?>"><?=$row->req_no;?></a></td>
                             <td><?=$row->po_date;?></td>
                             <td><?=$row->supplier;?></td>
                             <td><?=set_status($row->status);?></td>

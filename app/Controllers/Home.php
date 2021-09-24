@@ -17,54 +17,12 @@ class Home extends BaseController
 	}
 
 
-	public function index()
-	{
-		// $user->isLoggedIn(), 
-		// return dashboard else, login
-		// if($this->user->isLoggedIn()) 
-		// {
-			try {
-				$req = new RequestModel();
-				$data['requests'] = $req->where("status != 'Done' AND po != 1 AND status != 'With PO' AND subject ='purchase'")->findAll();
-
-				return view('requests/index', $data);
-			} catch (\Throwable $th) {
-				//throw $th;
-				die($th->getMessage());
-			}
-		// }
-		// else
-		// {
-		// 	return view('login');
-		// 	//return 'please login to continue...';
-		// }
-		
+	public function index(){
+		return ($this->user->isLoggedIn()) ?  redirect()->to('/task-list') : view('login');
 	}
 
-	public function dashboard()
-	{
-		// if($this->user->isLoggedIn()) 
-		// {
-		// 	return 'this is dashboard';
-		// }
-		// else
-		// {
-		// 	return redirect()->to('login');
-		// 	//return 'please login to continue...';
-		// }
-	}
-
-
-	public  function login()
-	{
-		if($this->user->isLoggedIn()) 
-		{
-			return redirect()->to('dashboard');
-		}
-		else
-		{
-			return view('login');
-		}
+	public  function login(){
+		return ($this->user->isLoggedIn()) ?  redirect()->to('/') : view('login');
 	}
 
 	public  function logout()

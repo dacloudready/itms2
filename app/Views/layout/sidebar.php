@@ -11,7 +11,7 @@
 
             <!-- Request -->
             <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('/');?>">
+                <a class="sidebar-link" href="<?=base_url('/request-list');?>">
                     <i class="align-middle" data-feather="edit"></i> <span class="align-middle">Request</span>
                  </a>
             </li>
@@ -30,13 +30,6 @@
                  </a>
             </li>
 
-             <!-- Item LIST -->
-             <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('/item-inventory');?>">
-                    <i class="align-middle" data-feather="database"></i> <span class="align-middle">Item Inventory</span>
-                </a>
-            </li>
-
             <!-- TASK -->
             <li class="sidebar-item">
                 <a class="sidebar-link" href="<?=base_url('/task-list');?>">
@@ -52,22 +45,7 @@
                     <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">New Request</span>
                  </a>
             </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('/add-task');?>">
-                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">New Task</span>
-                 </a>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('/add-inventory');?>">
-                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">Add to Inventory</span>
-                 </a>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="<?=base_url('#');?>">
-                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">Receive Item</span>
-                 </a>
-            </li>
-
+           
             <!-- <li class="sidebar-item">
                 <a class="sidebar-link" href="pages-profile.html">
         <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>

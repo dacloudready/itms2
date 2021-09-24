@@ -3,101 +3,178 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\UsersController;
+use App\Controllers\CommentsController;
+use App\Controllers\OrderController;
 use App\Models\RequestModel;
-use App\Models\CommentsModel;
-use App\Models\OrdersModel;
-
 
 class RequestController extends BaseController
 {
+
+	private $contUser;
+	private $contRequest;
+	private $contOrder;
+	private $contComment;
+
 	function __construct()
 	{
-		helper('status');
+		helper(['status', 'user']);
+
+		$this->contUser = new UsersController();
+		$this->contRequest = new RequestModel();
+		$this->contOrder = new OrderController();
+		$this->contComment = new CommentsController();
+
 	}
 
 	
+	public function index()
+	{
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
+		if($this->contUser->isAdmin())
+		{
+			$requests = $this->contRequest->where('status !=', 'Done')
+							->where('subject =','Purchase')
+							->findAll();
+		}else{
+			$requests = $this->contRequest->where('status !=', 'Done')
+							->where('subject =','Purchase')
+							->where('addedby', session()->get('username'))
+							->findAll();
+		}
+
+		$data['requests'] = $requests;
+		return view('requests/index', $data);
+	}
+
 	public function view($id)
 	{
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
 		if(isset($id))
 		{
-			$req = new RequestModel();
-			$data['request'] = $req->find($id);
+			$data = [
+				'request' => $this->contRequest->find($id),
+				'orders' => $this->contOrder->getOrdersByRequest($id),
+				'comments' => $this->contComment->getCommentsByRequest($id)
+			];
 
-			$comment = new CommentsModel();
-			$data['comments'] = $comment->where('requestid', $data['request']->id)->FindAll();
-
-			$orders = new OrdersModel();
-			$data['orders'] = $orders->where('req_no', $data['request']->id)->findAll();
-			
 			return view('requests/view', $data);
-
-			//return hellostatus();
 		}
 	}
 
 	public function print($id)
 	{
-		if(isset($id))
-		{
-			$req = new RequestModel();
-			$data['request'] = $req->find($id);
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
 
-			return view('requests/print', $data);
+		if(isset($id)){
+			$data['request'] = $this->contRequest->find($id);
+
+			if(session()->get('username') == $data['request']->addedby){
+				return view('requests/print', $data);
+			}else{
+				throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+			}
 		}
 	}
 
 
 	public function AddRequest()
 	{
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
 		return view('requests/add');
 	}
 
 	public function EditRequest($id)
 	{
-		$request = new RequestModel();
-		$data['request_id'] = $request->find($id);
-		$data['request'] = $request->where('id',$data['request_id']->id)->FindAll();
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
 
+		$data['request'] = $this->contRequest->find($id);
 		return view('requests/edit', $data);
 	}
 
 	
-
 	public function save()
 	{	
-		$requestmodel = new RequestModel();
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
 
-		$data['requestor'] = $this->request->getPost('requestor');
-		$data['branch']= $this->request->getPost('branch');
-		$data['department'] = $this->request->getPost('department');
-		$data['subject'] = $this->request->getPost('subject');
-		$data['category'] = $this->request->getPost('category');
-		$data['priority'] = $this->request->getPost('priority');
-		$data['description'] = $this->request->getPost('description');
-		$data['search_tag'] = $this->request->getPost('search_tag');
-		$data['status'] = 'New';
+		$requestmodel = new RequestModel();
+		$data = [
+			'requestor'		=>	$this->request->getPost('requestor'),
+			'branch'		=>	$this->request->getPost('branch'),
+			'department'	=>	$this->request->getPost('department'),
+			'subject'		=>	$this->request->getPost('subject'),
+			'category'		=>	$this->request->getPost('category'),
+			'priority'		=>	$this->request->getPost('priority'),
+			'description'	=>	$this->request->getPost('description'),
+			'addedby'		=>	session()->get('username'),
+			'search_tag'	=>	$this->request->getPost('search_tag'),
+			'status'		=>	'New'
+		];
 
 		if($data != null){
-			try {
-				$requestmodel->insert($data);
-				return "true";
-			} catch (\Throwable $th) {
-				//throw $th;
-				die('ERROR: AN ERROR OCCURED');
-				return "false";
-			}
+			return ($requestmodel->insert($data)) ? 'true' : 'false';
+		} 
+	}
+
+	public function UpdateRequest()
+	{	
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
+		$requestmodel = new RequestModel();
+
+		$data = [
+			'requestor'		=>	$this->request->getPost('requestor'),
+			'branch'		=>	$this->request->getPost('branch'),
+			'department'	=>	$this->request->getPost('department'),
+			'subject'		=>	$this->request->getPost('subject'),
+			'category'		=>	$this->request->getPost('category'),
+			'priority'		=>	$this->request->getPost('priority'),
+			'description'	=>	$this->request->getPost('description'),
+			'search_tag'	=>	$this->request->getPost('search_tag'),
+			'status'		=>	$this->request->getPost('status'),
+		];
+
+		$request_id = $this->request->getPost('request_id');
+		if($data != null){
+			return ($requestmodel->update($request_id,$data)) ? 'true' : 'false';
 		} 
 	}
 
 	public function AddRequestTask()
 	{
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
 		return view('task/add');
 	}
 
-	public function TaskList(){
-		$tasks = new RequestModel();
-		$data['tasks'] = $tasks->where('subject != "Purchase"')->findAll();
+	public function TaskList()
+	{
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
 
+		$data['tasks'] = $this->contRequest->where('subject != "Purchase"')	
+								->where('addedby', session()->get('username'))
+								->findAll();
 		return view('task/index', $data);
 	}
 }

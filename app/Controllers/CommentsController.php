@@ -12,6 +12,7 @@ class CommentsController extends BaseController
 		$comment = new CommentsModel();
 		$comment_data['action'] = $this->request->getPost('note');
 		$comment_data['requestid'] = $this->request->getPost('requestid');
+		$comment_data['userid'] = session()->get('userid');
 		if($comment_data != null) 
 		{
 			try {
@@ -20,5 +21,19 @@ class CommentsController extends BaseController
 				die($th->getMessage());
 			}
 		}
+	}
+
+	function getCommentsByRequest($requestid)
+	{
+		$comment = new CommentsModel();
+		$results = $comment->findAll($requestid);
+		if(count($results) != 0){
+			$comments = $comment->where('requestid', $requestid)->findAll();
+		}else{
+			$comments = null;
+		}
+
+		return $comments;
+
 	}
 }

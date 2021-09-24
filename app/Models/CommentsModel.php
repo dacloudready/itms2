@@ -14,6 +14,6 @@ class CommentsModel extends Model
 	protected $returnType           = 'object';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['action', 'requestid'];
+	protected $allowedFields        = ['action', 'requestid', 'userid'];
 
 }

@@ -147,50 +147,18 @@
                                     <tr>
                                         <td><strong>Request:</strong></td>
                                         <td>
-                                         <select class="form-select" id="subject" name="subject">
+                                         <select class="form-select" id="cboSubject" name="subject">
+                                            <option value="OThers">--please select--</option>
                                             <option value="Task">Task</option>
                                             <option value="Purchase">Purchase</option>
-                                            <option value="Support">Support</option>
-                                            <option value="Project">Project</option>
-                                            <option value="Email Account">Email Account</option>
-                                            <option value="Item Deployment">Item Deployment</option>
                                         </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Category:</strong></td>
                                         <td>
-                                            <select class="form-select" id="category" name="category">
-                                                <option value="Office Supply">Office Supply</option>
-                                                <option value="IT - Network Equipment">IT - Network Equipment</option>
-                                                <option value="IT - Consumables">IT - Consumables</option>
-                                                <option value="IT - Service Tool">IT - Service Tool</option>
-                                                <option value="IT - Peripherals">IT - Peripherals</option>
-                                                <option value="End-user Device">End-user Device</option>
-                                                <option value="Internet/LAN">Internet/LAN</option>
-                                                <option value="DealerPro/Pentana">DealerPro/Pentana</option>
-                                                <option value="CRM">CRM</option>
-                                                <option value="DMS/BRP">DMS/BRP</option>
-                                                <option value="PC Problem">PC Problem</option>
-                                                <option value="Telephone/Trunkline">Telephone/Trunkline</option>
-                                                <option value="System">System</option>
-                                                <option value="Accounts">Accounts</option>
-                                                <option value="IT - Warranty Claim">IT - Warranty Claim</option>
-                                                <option value="Item Deployment">Item Deployment</option>
-                                                <option value="Others">Others</option>
-                                            </select>
+                                            <select class="form-select" id="cboCategory" name="category"></select>
                                         </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td  width="30%"></td>
-                                        <td  width="70%"><div class="mb-4 p-1"></div></td>
                                     </tr>
                                     <tr>
                                         <td><strong>Priority</strong></td>
@@ -217,6 +185,8 @@
                                 </tbody>
                             </table>
                         </div>
+
+                       
                     </div>
                     <hr>
                
@@ -277,6 +247,44 @@
         AddNewRequest();
         $("#formRequest").load(location.href + " #formRequest");
     }); 
+
+    $('#cboSubject').change(function() {
+        var subject = $('#cboSubject').val();
+        let options = '';
+
+        switch(subject) {
+            case 'Task': 
+                    options  = `
+                        <option value="Support - Onsite">Support - Onsite</option>
+                        <option value="Support - Remote">Support - Remote</option>
+                        <option value="Device - Installation">Device - Installation</option>
+                        <option value="Software - Installation">Software - Installation</option>
+                        <option value="Item Deployment">Item Deployment</option>
+                    `;
+                    break;
+            
+            case 'Purchase' : 
+                     options  = `
+                        <option value="IT-Office Equipment">Office Equipment</option>
+                        <option value="IT-Network Device">IT-Network Device</option>
+                        <option value="IT-Miscellaneous">IT-Miscellaneous</option>
+                        <option value="IT-Peripherals">IT-Peripherals</option>
+                        <option value="IT-End User Device">IT-End User Device</option>
+                        <option value="IT-Tools">IT-Tools</option>
+                        <option value="IT-License Subscription">IT-License Subscription</option>
+                        <option value="IT-Security Devices">IT-Security Devices</option>
+
+                    `;
+                    break;
+
+            default:
+                    options = `<option value="Others">Others</option>`;
+                    break;
+        }
+
+        $('#cboCategory').empty().append(options);
+        //alert(Category);
+    });
  });
  </script>
  <?=$this->endSection(); ?>

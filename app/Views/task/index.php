@@ -33,7 +33,7 @@
 								<td><?=date_format(date_create($task->request_date),"m/d/Y");?></td>
 								<td><?=$task->requestor;?></td>
 								<td><?=$task->description;?></td>
-								<td><?=$task->subject;?></td>
+								<td><?=$task->category;?></td>
 								<td><?=$task->search_tag?></td>
 								<td><?=set_status($task->status);?></td>
 							</tr>

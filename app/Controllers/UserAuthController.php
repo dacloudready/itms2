@@ -40,27 +40,18 @@ class UserAuthController extends BaseController
 		$validated = $this->validate($rules);
 
 		if($validated) {
-			try {
-				//code...	
-
-				$user = new UsersModel();
-				$post_username = $this->request->getPost('username');
-				$post_password =  $this->request->getPost('password');
-				$user_data = $user->where(['username' => $post_username, 'password' => $post_password])->findAll();
-				$session_vars = [
-					'username' => $user_data[0]['username'],
-					'userid'	=> $user_data[0]['id'],
-					'logged_in' => true
-				];
-
-				session()->set($session_vars);
-				return redirect()->to('/dashboard');
-			// 
-		} 
-			catch (\Throwable $th) {
-				//throw $th;
-				die($th->getMessage());
-			}
+			$user = new UsersModel();
+			$post_username = $this->request->getPost('username');
+			$post_password =  $this->request->getPost('password');
+			$user_data = $user->where(['username' => $post_username, 'password' => $post_password])->findAll();
+			$session_vars = [
+				'username' => $user_data[0]['username'],
+				'userid'	=> $user_data[0]['id'],
+				'logged_in' => true
+			];
+			session()->set($session_vars);
+			return redirect()->to('/');
+			
 		}else {
 			return redirect()->to('/login');
 		}
