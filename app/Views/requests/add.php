@@ -71,76 +71,19 @@
                                         <td><strong>Branch Group</strong></td>
                                         <td>
                                             <select class="form-select" id="branch" name="branch">
-                                                <option value="NISSAN-MANTRADE">NISSAN-MANTRADE</option>
-                                                <option value="NISSAN-OTIS">NISSAN-OTIS</option>
-                                                <option value="NISSAN-PASAY">NISSAN-PASAY</option>
-                                                <option value="NISSAN-BGC">NISSAN-BGC</option>
-                                                <option value="NISSAN-ABADSANTOS">NISSAN-ABADSANTOS</option>
-                                                <option value="NISSAN-TALISAY">NISSAN-TALISAY</option>
-                                                <option value="NISSAN-VRAMA">NISSAN-VRAMA</option>
-                                                <option value="NISSAN-SMSEASIDE">NISSAN-SMSEASIDE</option>
-                                                <option value="NISSAN-MATINA">NISSAN-MATINA</option>
-                                                <option value="NISSAN-TAGUM">NISSAN-TAGUM</option>
-                                                <option value="NISSAN-PALAWAN">NISSAN-PALAWAN</option>
-                                                <option value="MITSUBISHI-TALISAY">MITSUBISHI-TALISAY</option>
-                                                <option value="MITSUBISHI-MATINA">MITSUBISHI-MATINA</option>
-                                                <option value="MITSUBISHI-SUCAT">MITSUBISHI-SUCAT</option>
-                                                <option value="SUZUKI-PALAWAN">SUZUKI-PALAWAN</option>
-                                                <option value="SUZUKI-SANPABLO">SUZUKI-SANPABLO</option>
-                                                <option value="SUZUKI-SANPABLO">SUZUKI-SANPABLO</option>
-                                                <option value="SUZUKI-STO TOMAS">SUZUKI-STO TOMAS</option>
-                                                <option value="FOTON-TALISAY">FOTON-TALISAY</option>
-                                                <option value="FUSO-LIPA">FUSO-LIPA</option>
-                                                <option value="HONDA-FAIRVIEW">HONDA-FAIRVIEW</option>
-                                                <option value="HONDA-MARCOS HIGHWAY">HONDA-MARCOS HIGHWAY</option>
-                                                <option value="GEELY-ASIANA">GEELY-ASIANA</option>
-                                                <option value="GEELY-SANTAROSA">GEELY-SANTAROSA</option>
-                                                <option value="GEELY-CEBU">GEELY-CEBU</option>
-                                                <option value="GEELY-LIPA">GEELY-LIPA</option>
-                                                <option value="GEELY-PAMPANGA">GEELY-PAMPANGA</option>
-                                                <option value="GEELY-TARLAC">GEELY-TARLAC</optiom>
-                                                <option value="GEELY-NAGA">GEELY-NAGA</option>
-                                                <option value="MG-MARILAO">MG-MARILAO</option>
-                                                <option value="MG-PASAY">MG-PASAY</option>
-                                                <option value="MG-SANPABLO">MG-SANPABLO</option>
-                                                <option value="MG-BOHOL">MG-BOHOL</option>
-                                                <option value="KIA-MANDAUE">KIA-MANDAUE</option>
-                                                <option value="KIA-TALISAY">KIA-TALISAY</option>
-                                                <option value="KIA-STO TOMAS">KIA-STO TOMAS</option>
-                                                <option value="KIA-GORORDO">KIA-GORORDO</option>
-                                                <option value="KIA-SANPABLO">KIA-SANPABLO</option>
-                                                <option value="BMW-LAHUG">BMW-LAHUG</option>
-                                                <option value="BMW-NRA">BMW-NRA</option>
-                                                <option value="ISUZU-LUCENA">ISUZU-LUCENA</option>
-                                                <option value="MARKANE">MARKANE</option>
-                                                <option value="NAGA">NAGA</option>
-                                                <option value="PEUGEOT-PASIG">PEUGEOT-PASIG</option>
-                                                <option value="BACOOR-MOLINO">BACOOR-MOLINO</option>
-                                                <option value="SUBARU-PAMPANGA">SUBARU-PAMPANGA</option>
-                                                <option value="GATEWAY">GATEWAY</option>
-                                                <option value="STOCK">STOCK</option>
-                                                <option value="OTHERS">OTHERS</option>
+                                                <?php foreach(get_gw_branches() as $key => $value): ?>
+                                                    <option value="<?=$value?>"><?=$value?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Department</strong></td>
                                         <td>
-                                        <select class="form-select" id="department" name="department">
-                                            <option value="IT">IT</option>
-                                            <option value="HR">HR</option>
-                                            <option value="SERVICE-PARTS">PARTS</option>
-                                            <option value="SERVICE">SERVICE</option>
-                                            <option value="BRP">BRP</option>
-                                            <option value="SALES">SALES</option>
-                                            <option value="ACCTG">ACCTG</option>
-                                            <option value="LTO">LTO</option>
-                                            <option value="ADMIN">ADMIN</option>
-                                            <option value="INSURANCE">INSURANCE</option>
-                                            <option value="CRU">CRU</option>
-                                            <option value="MARKETING">MARKETING</option>
-                                            <option value="CRM-ENCODING">CRM-ENCODING</option>
-                                            <option value="GENERAL">GENERAL</option>
+                                            <select class="form-select" id="department" name="department">
+                                                <?php foreach(get_gw_departments() as $key => $value): ?>
+                                                        <option value="<?=$value?>"><?=$value?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </td>
                                     </tr>
@@ -164,11 +107,9 @@
                                         <td><strong>Priority</strong></td>
                                         <td>
                                         <select class="form-select" id="priority" name="priority">
-                                            <option value="Low">Low</option>
-                                            <option value="Normal">Normal</option>
-                                            <option value="Important">Important</option>
-                                            <option value="Urgent">Urgent</option>
-                                            <option value="Critical">Critical</option>
+                                            <?php foreach(get_gw_priorities() as $key => $value): ?>
+                                                    <option value="<?=$value?>"><?=$value?></option>
+                                            <?php endforeach; ?>
                                         </select>
                                         </td>
                                     </tr>
@@ -260,6 +201,7 @@
                         <option value="Device - Installation">Device - Installation</option>
                         <option value="Software - Installation">Software - Installation</option>
                         <option value="Item Deployment">Item Deployment</option>
+                        <option value="Email Accounts">Email Accounts</option>
                     `;
                     break;
             
@@ -283,7 +225,6 @@
         }
 
         $('#cboCategory').empty().append(options);
-        //alert(Category);
     });
  });
  </script>

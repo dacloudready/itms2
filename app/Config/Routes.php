@@ -56,6 +56,7 @@ $routes->get('/print-request/(:num)','RequestController::print/$1');
 $routes->post('/add-request', 'RequestController::save');
 $routes->post('/add-task', 'RequestController::save');
 $routes->get('/edit-request/(:num)', 'RequestController::EditRequest/$1');
+$routes->get('/load-category/(:num)', 'RequestController::LoadCategory/$1');
 $routes->post('/edit-request/(:num)', 'RequestController::UpdateRequest');
 
 // Comments Controller

@@ -18,7 +18,7 @@ class RequestController extends BaseController
 
 	function __construct()
 	{
-		helper(['status', 'user']);
+		helper(['status', 'user', 'gw_view']);
 
 		$this->contUser = new UsersController();
 		$this->contRequest = new RequestModel();
@@ -103,6 +103,17 @@ class RequestController extends BaseController
 
 		$data['request'] = $this->contRequest->find($id);
 		return view('requests/edit', $data);
+	}
+
+	public function LoadCategory($id)
+	{
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
+		$data = $this->contRequest->find($id);
+		
+		return json_encode($data);
 	}
 
 	

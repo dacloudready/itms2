@@ -1,5 +1,8 @@
 <?php 
 
+// transfer this to gw_helpers
+// change name to gw_set_status($status)
+
 function set_status($status)
 {
     switch($status)

@@ -71,69 +71,26 @@
                                         <td><strong>Branch Group</strong></td>
                                         <td>
                                         <select class="form-select" name="branch">
-                                            <option value="NISSAN-MANTRADE" <?=$request->branch == 'NISSAN-MANTRADE' ? 'selected' : ''?>>NISSAN-MANTRADE</option>
-                                            <option value="NISSAN-OTIS" <?=$request->branch == 'NISSAN-OTIS' ? 'selected' : ''?>>NISSAN-OTIS</option>
-                                            <option value="NISSAN-PASAY" <?=$request->branch == 'NISSAN-PASAY' ? 'selected' : ''?>>NISSAN-PASAY</option>
-                                            <option value="NISSAN-BGC" <?=$request->branch == 'NISSAN-BGC' ? 'selected' : ''?>>NISSAN-BGC</option>
-                                            <option value="NISSAN-ABADSANTOS" <?=$request->branch == 'NISSAN-ABADSANTOS' ? 'selected' : ''?>>NISSAN-ABADSANTOS</option>
-                                            <option value="NISSAN-TALISAY" <?=$request->branch == 'NISSAN-TALISAY' ? 'selected' : ''?>>NISSAN-TALISAY</option>
-                                            <option value="NISSAN-VRAMA" <?=$request->branch == 'NISSAN-VRAMA' ? 'selected' : ''?>>NISSAN-VRAMA</option>
-                                            <option value="NISSAN-SMSEASIDE" <?=$request->branch == 'NISSAN-SMSEASIDE' ? 'selected' : ''?>>NISSAN-SMSEASIDE</option>
-                                            <option value="NISSAN-MATINA" <?=$request->branch == 'NISSAN-MATINA' ? 'selected' : ''?>>NISSAN-MATINA</option>
-                                            <option value="NISSAN-TAGUM" <?=$request->branch == 'NISSAN-TAGUM' ? 'selected' : ''?>>NISSAN-TAGUM</option>
-                                            <option value="NISSAN-PALAWAN" <?=$request->branch == 'NISSAN-PALAWAN' ? 'selected' : ''?>>NISSAN-PALAWAN</option>
-                                            <option value="MITSUBISHI-TALISAY" <?=$request->branch == 'MITSUBISHI-TALISAY' ? 'selected' : ''?>>MITSUBISHI-TALISAY</option>
-                                            <option value="MITSUBISHI-MATINA" <?=$request->branch == 'MITSUBISHI-MATINA' ? 'selected' : ''?>>MITSUBISHI-MATINA</option>
-                                            <option value="MITSUBISHI-SUCAT" <?=$request->branch == 'MITSUBISHI-SUCAT' ? 'selected' : ''?>>MITSUBISHI-SUCAT</option>
-                                            <option value="SUZUKI-PALAWAN" <?=$request->branch == 'SUZUKI-PALAWAN' ? 'selected' : ''?>>SUZUKI-PALAWAN</option>
-                                            <option value="SUZUKI-SANPABLO" <?=$request->branch == 'SUZUKI-SANPABLO' ? 'selected' : ''?>>SUZUKI-SANPABLO</option>
-                                            <option value="SUZUKI-ALAMINOS" <?=$request->branch == 'SUZUKI-ALAMINOS' ? 'selected' : ''?>>SUZUKI-ALAMINOS</option>
-                                            <option value="FOTON-TALISAY" <?=$request->branch == 'FOTON-TALISAY' ? 'selected' : ''?>>FOTON-TALISAY</option>
-                                            <option value="FUSO-LIPA" <?=$request->branch == 'FUSO-LIPA' ? 'selected' : ''?>>FUSO-LIPA</option>
-                                            <option value="HONDA-FAIRVIEW" <?=$request->branch == 'HONDA-FAIRVIEW' ? 'selected' : ''?>>HONDA-FAIRVIEW</option>
-                                            <option value="HONDA-MARCOS HIGHWAY" <?=$request->branch == 'HONDA-MARCOS HIGHWAY' ? 'selected' : ''?>>HONDA-MARCOS HIGHWAY</option>
-                                            <option value="GEELY-ASIANA" <?=$request->branch == 'GEELY-ASIANA' ? 'selected' : ''?>>GEELY-ASIANA</option>
-                                            <option value="GEELY-SANTAROSA" <?=$request->branch == 'GEELY-SANTAROSA' ? 'selected' : ''?>>GEELY-SANTAROSA</option>
-                                            <option value="GEELY-CEBU" <?=$request->branch == 'GEELY-CEBU' ? 'selected' : ''?>>GEELY-CEBU</option>
-                                            <option value="GEELY-LIPA" <?=$request->branch == 'GEELY-LIPA' ? 'selected' : ''?>>GEELY-LIPA</option>
-                                            <option value="GEELY-PAMPANGA" <?=$request->branch == 'GEELY-PAMPANGA' ? 'selected' : ''?>>GEELY-PAMPANGA</option>
-                                            <option value="MG-PASAY" <?=$request->branch == 'MG-PASAY' ? 'selected' : ''?>>MG-PASAY</option>
-                                            <option value="MG-SANPABLO" <?=$request->branch == 'MG-SANPABLO' ? 'selected' : ''?>>MG-SANPABLO</option>
-                                            <option value="MG-BOHOL" <?=$request->branch == 'MG-BOHOL' ? 'selected' : ''?>>MG-BOHOL</option>
-                                            <option value="KIA-MANDAUE" <?=$request->branch == 'KIA-MANDAUE' ? 'selected' : ''?>>KIA-MANDAUE</option>
-                                            <option value="KIA-TALISAY" <?=$request->branch == 'KIA-TALISAY' ? 'selected' : ''?>>KIA-TALISAY</option>
-                                            <option value="KIA-GORORDO" <?=$request->branch == 'KIA-GORORDO' ? 'selected' : ''?>>KIA-GORORDO</option>
-                                            <option value="KIA-SANPABLO" <?=$request->branch == 'KIA-SANPABLO' ? 'selected' : ''?>>KIA-SANPABLO</option>
-                                            <option value="BMW-LAHUG" <?=$request->branch == 'BMW-LAHUG' ? 'selected' : ''?>>BMW-LAHUG</option>
-                                            <option value="BMW-NRA" <?=$request->branch == 'BMW-NRA' ? 'selected' : ''?>>BMW-NRA</option>
-                                            <option value="MARKANE" <?=$request->branch == 'MARKANE' ? 'selected' : ''?>>MARKANE</option>
-                                            <option value="NAGA" <?=$request->branch == 'NAGA' ? 'selected' : ''?>>NAGA</option>
-                                            <option value="PEUGEOT-PASIG" <?=$request->branch == 'PEUGEOT-PASIG' ? 'selected' : ''?>>PEUGEOT-PASIG</option>
-                                            <option value="BACOOR-MOLINO" <?=$request->branch == 'BACOOR-MOLINO' ? 'selected' : ''?>>BACOOR-MOLINO</option>
-                                            <option value="STOCK" <?=$request->branch == 'STOCK' ? 'selected' : ''?>>STOCK</option>
-                                            <option value="OTHERS" <?=$request->branch == 'OTHERS' ? 'selected' : ''?>>OTHERS</option>
+                                            <option value="<?=$request->branch?>"><?=$request->branch?></option>
+                                            <?php foreach(get_gw_branches() as $key => $value): ?>
+                                                <?php if($request->branch != $value): ?>
+                                                    <option value="<?=$value?>"><?=$value?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
 								        </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><strong>Department</strong></td>
                                         <td>
-                                        <select class="form-select" name="department">
-                                            <option value="IT" <?=$request->department == 'IT' ? 'selected' : ''?>>IT</option>
-                                            <option value="HR" <?=$request->department == 'HR' ? 'selected' : ''?>>HR</option>
-                                            <option value="SERVICE-PARTS" <?=$request->department == 'SERVICE-PARTS' ? 'selected' : ''?>>PARTS</option>
-                                            <option value="SERVICE" <?=$request->department == 'SERVICE' ? 'selected' : ''?>>SERVICE</option>
-                                            <option value="BRP" <?=$request->department == 'BRP' ? 'selected' : ''?>>BRP</option>
-                                            <option value="SALES" <?=$request->department == 'SALES' ? 'selected' : ''?>>SALES</option>
-                                            <option value="ACCTG" <?=$request->department == 'ACCTG' ? 'selected' : ''?>>ACCTG</option>
-                                            <option value="LTO" <?=$request->department == 'LTO' ? 'selected' : ''?>>LTO</option>
-                                            <option value="ADMIN" <?=$request->department == 'ADMIN' ? 'selected' : ''?>>ADMIN</option>
-                                            <option value="INSURANCE" <?=$request->department == 'INSURANCE' ? 'selected' : ''?>>INSURANCE</option>
-                                            <option value="CRU" <?=$request->department == 'CRU' ? 'selected' : ''?>>CRU</option>
-                                            <option value="MARKETING" <?=$request->department == 'MARKETING' ? 'selected' : ''?>>MARKETING</option>
-                                            <option value="CRM-ENCODING" <?=$request->department == 'CRM-ENCODING' ? 'selected' : ''?>>CRM-ENCODING</option>
-                                            <option value="GENERAL" <?=$request->department == 'GENERAL' ? 'selected' : ''?>>GENERAL</option>
-                                        </select>
+                                            <select class="form-select" name="department">
+                                                <option value="<?=$request->department?>"><?=$request->department?></option>
+                                                <?php foreach(get_gw_departments() as $key => $value): ?>
+                                                    <?php if($request->department != $value): ?>
+                                                        <option value="<?=$value?>"><?=$value?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
@@ -147,11 +104,12 @@
                                         <td><strong>Priority</strong></td>
                                         <td>
                                         <select class="form-select" id="priority" name="priority">
-                                            <option value="Low" <?=$request->priority == 'Low' ? 'selected' : ''?>>Low</option>
-                                            <option value="Normal" <?=$request->priority == 'Normal' ? 'selected' : ''?>>Normal</option>
-                                            <option value="Important" <?=$request->priority == 'Important' ? 'selected' : ''?>>Important</option>
-                                            <option value="Urgent" <?=$request->priority == 'Urgent' ? 'selected' : ''?>>Urgent</option>
-                                            <option value="Critical" <?=$request->priority == 'Low' ? 'selected' : ''?>>Critical</option>
+                                            <option value="<?=$request->priority?>"><?=$request->priority?></option>
+                                            <?php foreach(get_gw_priorities() as $key => $value): ?>
+                                                <?php if($request->priority != $value): ?>
+                                                    <option value="<?=$value?>"><?=$value?></option>
+                                                <?php endif;?>
+                                            <?php endforeach;?>    
                                         </select>
                                         </td>
                                     </tr>
@@ -237,6 +195,56 @@
         
     }
 
+    const comboSubject =  function(){ 
+       $('#subject').ready(function() {
+        var subject = $('#subject').val();
+        var category = $('#category').val();
+    
+
+        $.get("<?=base_url('load-category/'.$request->id)?>", function(result) {
+            let options = '';
+            var data = jQuery.parseJSON(result);
+
+            switch(data.subject) {
+                case 'Task': 
+                        options  = `
+                            <option value='Support - Onsite' `+(data.category == 'Support - Onsite' ? 'selected' : '')+`>Support - Onsite</option>
+                            <option value='Support - Remote' `+(data.category == 'Support - Remote' ? 'selected' : '')+`>Support - Remote</option>
+                            <option value='Device - Installation' `+(data.category == 'Device - Installation' ? 'selected' : '')+`>Device - Installation</option>
+                            <option value='Software - Installation' `+(data.category == 'Software - Installation' ? 'selected' : '')+`>Software - Installation</option>
+                            <option value='Item Deployment' `+(data.category == 'Item Deployment' ? 'selected' : '')+`>Item Deployment</option>
+                            <option value='Email Accounts' `+(data.category == 'Email Accounts' ? 'selected' : '')+`>Email Accounts</option>
+                        `;
+                        break;
+                
+                case 'Purchase' : 
+                        options  = `
+                            <option value="IT-Office Equipment" `+(data.category == 'IT-Office Equipment' ? 'selected' : '')+`>Office Equipment</option>
+                            <option value="IT-Network Device" `+(data.category == 'IT-Network Device' ? 'selected' : '')+`>IT-Network Device</option>
+                            <option value="IT-Miscellaneous" `+(data.category == 'IT-Miscellaneous' ? 'selected' : '')+`>IT-Miscellaneous</option>
+                            <option value="IT-Peripherals" `+(data.category == 'IT-Peripherals' ? 'selected' : '')+`>IT-Peripherals</option>
+                            <option value="IT-End User Device" `+(data.category == 'IT-End User Device' ? 'selected' : '')+`>IT-End User Device</option>
+                            <option value="IT-Tools" `+(data.category == 'IT-Tools' ? 'selected' : '')+`>IT-Tools</option>
+                            <option value="IT-License Subscription" `+(data.category == 'IT-License Subscription' ? 'selected' : '')+`>IT-License Subscription</option>
+                            <option value="IT-Security Devices" `+(data.category == 'IT-Security Devices' ? 'selected' : '')+`>IT-Security Devices</option>
+
+                        `;
+                        break;
+
+                default:
+                        options = `<option value="Others">Others</option>`;
+                        break;
+                }
+                $('#category').empty().append(options);
+        });
+      
+        
+        
+
+       
+        //alert('TEST');
+        });
+   }
 
     const EditRequest = function(){
          let url = window.location.href;
@@ -247,7 +255,10 @@
     
                  if(data == 'true'){
                      alert_note('success', 'Update Successful!');
-                     $("#formRequest").load(location.href + " #formRequest");
+                     $("#formRequest").load(location.href + " #formRequest" );
+                     $("#subject").load( location.href + " #subject",function(){
+                       comboSubject();
+                    }); 
                  } else {
                      alert_note('error', 'Error Occured');
                  }
@@ -259,46 +270,11 @@
    
      $("#submit").click(function(){
          EditRequest();
+        
      }); 
  
  
-     $('#subject').load(function() {
-        var subject = $('#subject').val();
-        let options = '';
-
-        switch(subject) {
-            case 'Task': 
-                    options  = `
-                        <option value="Support - Onsite">Support - Onsite</option>
-                        <option value="Support - Remote">Support - Remote</option>
-                        <option value="Device - Installation">Device - Installation</option>
-                        <option value="Software - Installation">Software - Installation</option>
-                        <option value="Item Deployment">Item Deployment</option>
-                    `;
-                    break;
-            
-            case 'Purchase' : 
-                     options  = `
-                        <option value="IT-Office Equipment">Office Equipment</option>
-                        <option value="IT-Network Device">IT-Network Device</option>
-                        <option value="IT-Miscellaneous">IT-Miscellaneous</option>
-                        <option value="IT-Peripherals">IT-Peripherals</option>
-                        <option value="IT-End User Device">IT-End User Device</option>
-                        <option value="IT-Tools">IT-Tools</option>
-                        <option value="IT-License Subscription">IT-License Subscription</option>
-                        <option value="IT-Security Devices">IT-Security Devices</option>
-
-                    `;
-                    break;
-
-            default:
-                    options = `<option value="Others">Others</option>`;
-                    break;
-        }
-
-        $('#category').empty().append(options);
-        //alert(Category);
-    });
+     comboSubject();
      
  });
  </script>

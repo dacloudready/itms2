@@ -45,6 +45,11 @@
                     <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">New Request</span>
                  </a>
             </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="<?=base_url('/add-order');?>">
+                    <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">New Purchase Order</span>
+                 </a>
+            </li>
            
             <!-- <li class="sidebar-item">
                 <a class="sidebar-link" href="pages-profile.html">
