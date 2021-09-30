@@ -127,38 +127,20 @@
                                         <td><strong>Status</strong></td>
                                         <td>
                                             <select class="form-select" name="status">
-                                            <option value="Not yet started" <?=$request->status == 'Not yet started' ? 'selected' : ''?>>Not yet started</option>
-                                            <option value="Started" <?=$request->status == 'Started' ? 'selected' : ''?>>Started</option>
-                                            <option value="In-progress" <?=$request->status == 'In-progress' ? 'selected' : ''?>>In-progress</option>
-                                            <option value="For Confirmation" <?=$request->status == 'For Confirmation' ? 'selected' : ''?>>For Confirmation</option>
-                                            <option value="For Follow-up" <?=$request->status == 'For Follow-up' ? 'selected' : ''?>>For Follow-up</option>
-                                            <option value="For PO Creation" <?=$request->status == 'For PO Creation' ? 'selected' : ''?>>For PO Creation</option>
-                                            <option value="For Request" <?=$request->status == 'For Request' ? 'selected' : ''?>>For Request</option>
-                                            <option value="For Approval" <?=$request->status == 'For Approval' ? 'selected' : ''?>>For Approval</option>
-                                            <option value="For Allocation" <?=$request->status == 'For Allocation' ? 'selected' : ''?>>For Allocation</option>
-                                            <option value="For Delivery" <?=$request->status == 'For Delivery' ? 'selected' : ''?>>For Delivery</option>
-                                            <option value="For Verification" <?=$request->status == 'Verification' ? 'selected' : ''?>>For Verification</option>
-                                            <option value="For Assessment" <?=$request->status == 'For Assessment' ? 'selected' : ''?>>For Assessment</option>
-                                            <option value="For Immediate Action" <?=$request->status == 'For Immediate Action' ? 'selected' : ''?>>For Immediate Action</option>
-                                            <option value="With PO" <?=$request->status == 'With PO' ? 'selected' : ''?>>With PO</option>
-                                            <option value="Ordered" <?=$request->status == 'Ordered' ? 'selected' : ''?>>Ordered</option>
-                                            <option value="Monitoring" <?=$request->status == 'Monitor' ? 'selected' : ''?>>Monitoring</option>
-                                            <option value="Suspend" <?=$request->status == 'Suspend' ? 'selected' : ''?>>Suspend</option>
-                                            <option value="For Schedule" <?=$request->status == 'For Schedule' ? 'selected' : ''?>>For Schedule</option>
-                                            <option value="Scheduled" <?=$request->status == 'Scheduled' ? 'selected' : ''?>>Scheduled</option>
-                                            <option value="Delivered" <?=$request->status == 'Delivered' ? 'selected' : ''?>>Delivered</option>
-                                            <option value="Recommend external solution" <?=$request->status == 'Recommend external solution' ? 'selected' : ''?>>Recommend ext solution</option>
-                                            <option value="Modified" <?=$request->status == 'Modified' ? 'selected' : ''?>>Modified</option>
+                                                <option value="<?=$request->status?>"><?=$request->status?></option>
+                                                <?php foreach(get_gw_status() as $key => $value): ?>
+                                                    <?php if($request->status != $value): ?>
+                                                        <option value="<?=$value?>"><?=$value?></option>
+                                                    <?php endif;?>
+                                                <?php endforeach;?>       
+                                            </select>
                                         </td>
                                     </tr>   
                                 </tbody>
                             </table>
                         </div>
-
-                        
                     </div>
                     <hr>
-               
                     <div class="px-2 d-flex">
                         <div class="flex-grow-1 "></div>
                         <div class="px-2">

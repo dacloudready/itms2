@@ -45,16 +45,28 @@ function set_status($status)
                     $bg = 'bg-danger'; 
                     break;
 
+        case 'For Approval': 
+            $bg = 'bg-danger'; 
+            break;
+
         case 'Done': 
                     $bg = 'bg-success'; 
                     break;
 
+        case 'New': 
+            $bg = 'bg-secondary'; 
+            break;
+
+        case 'Closed': 
+            $bg = 'bg-success'; 
+            break;
+
         case 'Modified': 
-                    $bg = 'bg-danger'; 
+                    $bg = 'bg-info'; 
                     break;
 
         case 'With PO': 
-                    $bg = 'bg-info'; 
+                    $bg = 'bg-success'; 
                     break;
 
          // ORDER STATUS
@@ -75,7 +87,7 @@ function set_status($status)
                     break;       
         
         case 'Closed': 
-            $bg = 'bg-sucess'; 
+            $bg = 'bg-success'; 
             break; 
 
         default: $bg = 'bg-info';

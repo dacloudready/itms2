@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Controllers\UserController;
 use App\Models\UsersModel;
 
+
 class UserAuthController extends BaseController
 {
 
@@ -43,18 +44,27 @@ class UserAuthController extends BaseController
 			$user = new UsersModel();
 			$post_username = $this->request->getPost('username');
 			$post_password =  $this->request->getPost('password');
-			$user_data = $user->where(['username' => $post_username, 'password' => $post_password])->findAll();
-			$session_vars = [
+			$user_data = $user->where('username', $post_username)
+								->where('password', $post_password)
+								->findAll();
+
+			if(count($user_data) !=0){
+				$session_vars = [
 				'username' => $user_data[0]['username'],
 				'userid'	=> $user_data[0]['id'],
 				'logged_in' => true
-			];
-			session()->set($session_vars);
-			return redirect()->to('/');
-			
+				];
+				session()->set($session_vars);
+				return redirect()->to('/');
+			}else{
+				$data['errors'] = "Credentials not accepted. Check your username or password.";
+			}
 		}else {
-			return redirect()->to('/login');
+				$data['errors'] = $this->validator->listErrors();
+
 		}
+
+		return view('/login', $data);
 		
 	}
 

@@ -19,6 +19,7 @@
                     <div class="flex-grow-1 ">
                         <p class="h4 mb-4 text-muted"><strong>ID#<?="{$request->id}: {$request->subject} | {$request->category}"; ?></strong></p>
                     </div>
+                    <?php if($request->status != 'Closed'): ?>
                     <div class="px-2">
                         <a href="<?=base_url('edit-request/'.$request->id)?>"><i class="align-middle" data-feather="edit"></i></a>
                     </div>
@@ -26,8 +27,9 @@
                         <a href="#" id="btnPrintDiv"><i class="align-middle" data-feather="printer"></i></a>
                     </div>
                     <div class="px-2">
-                        <a href="#"  data-bs-toggle="modal" data-bs-target="#MarkAsClose"><i class="align-middle" data-feather="check-square"></i></a>
+                        <a href="#" id="closeRequest"><i class="align-middle" data-feather="check-square"></i></a>
                     </div>
+                    <?php endif?>
                 </div>
 
                 <table class="table table-bordred">
@@ -60,9 +62,9 @@
                             <td><?=set_status($request->priority);?></td>
                         </tr>
 
-                        <tr>
+                        <tr >
                             <td><strong>STATUS:</strong></td>
-                            <td><?=set_status($request->status);?></td>
+                            <td id="statusRow"><?=set_status($request->status);?></td>
                         </tr>
 
                         <tr>
@@ -110,9 +112,11 @@
                     <div class="flex-grow-1 ">
                         <p><strong> NOTES:</strong></p>
                     </div>
+                    <?php if($request->status != 'Closed'):?>
                     <div class="px-2">
                         <a alt-text="Click to add new notes." id="addNotes"><i class="align-middle" data-feather="file-plus"></i></a>
                     </div>
+                    <?php endif?>
                 </div>
                 <table class="table table-bordred" id="tblNotes">
                     <thead class="bg-dark text-light">
@@ -225,6 +229,7 @@
                     </table>
                 </tr>
             </table>
+            <input type="hidden" id="requestID" value="<?=$request->id?>">
             <div class="pull-right">	
         </div>
         </div>
@@ -302,6 +307,19 @@
                     }
                 });
             }
+        });
+
+        $('#closeRequest').click(function(){
+            let closeRequest = confirm('are you sure you want to closed this Request?');
+            let requestID = $('#requestID').val();
+            let url = "<?=base_url('close-request')?>/"+ requestID; 
+
+            if(closeRequest == true){
+                $.post(url,{ reqID: requestID }, function(data){
+                    $("#statusRow").load(location.href + " #statusRow" );
+                   console.log(data);
+                });
+            } 
         });
    });
         

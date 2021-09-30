@@ -144,6 +144,26 @@
 								
 							</div>
 
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Remarks</h5>
+								</div>
+								<div class="card-body h-100">
+									<table class="table table-bordred">
+										<thead class="bg-dark text-light">
+											<th>DETAILS</th>
+											<th>VALUE</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td width="30%"><strong>Message</strong></td>
+												<td width="70%"></td>
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+
 							<!--<div class="card">
 								<div class="card-header">
 									<h5 class="card-title mb-0">Repair History</h5>

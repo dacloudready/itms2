@@ -82,6 +82,33 @@ function get_gw_priorities()
     return $priorities = ['Low', 'Normal', 'Important', 'Urgent', 'Critical'];
 }
 
-
+function get_gw_status()
+{   
+    return $status = [
+        'Not yet started',
+        'Started',
+        'In-progress',
+        'For Confirmation',
+        'For Follow-up',
+        'For PO Creation',
+        'For Request',
+        'For Approval',
+        'For Allocation',
+        'For Delivery',
+        'For Verification',
+        'For Assessment',
+        'For Immediate Action',
+        'With PO',
+        'Ordered',
+        'Monitoring',
+        'Suspend',
+        'For Schedule',
+        'Scheduled',
+        'Delivered',
+        'Recommend external solution',
+        'Modified',
+        'Closed'
+    ];
+}
 
 ?>

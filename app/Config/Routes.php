@@ -43,8 +43,10 @@ $routes->get('/item-inventory', 'ItemsController::inventory'); // for validation
 $routes->get('/item-view/(:num)','ItemsController::view/$1');
 
 // Orders Controller
+$routes->get('/add-order', 'OrderController::addOrder');
 $routes->get('/order-list', 'OrderController::index'); 
-
+$routes->get('/view-order/(:num)','OrderController::viewOrder/$1');
+$routes->post('/close-order/(:num)', 'OrderController::closePO');
 
 // Request Controller
 $routes->get('/request-list','RequestController::index');
@@ -53,11 +55,12 @@ $routes->get('/add-task','RequestController::AddRequestTask');
 $routes->get('/task-list','RequestController::TaskList');
 $routes->get('/view-request/(:num)','RequestController::view/$1');
 $routes->get('/print-request/(:num)','RequestController::print/$1');
-$routes->post('/add-request', 'RequestController::save');
-$routes->post('/add-task', 'RequestController::save');
 $routes->get('/edit-request/(:num)', 'RequestController::EditRequest/$1');
 $routes->get('/load-category/(:num)', 'RequestController::LoadCategory/$1');
 $routes->post('/edit-request/(:num)', 'RequestController::UpdateRequest');
+$routes->post('/add-request', 'RequestController::save');
+$routes->post('/add-task', 'RequestController::save');
+$routes->post('/close-request/(:num)', 'RequestController::closeRequest');
 
 // Comments Controller
 $routes->post('/add-comment', 'CommentsController::add_comment');

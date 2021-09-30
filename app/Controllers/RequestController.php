@@ -188,4 +188,19 @@ class RequestController extends BaseController
 								->findAll();
 		return view('task/index', $data);
 	}
+
+	public function closeRequest(){
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
+		$data = [
+			'status' =>	'Closed',
+		];
+
+		$requestID = $this->request->getPost('reqID');
+		if($requestID != null){
+			return  ($this->contRequest->update($requestID,$data)) ? 'true' : 'false';
+		}
+	}
 }

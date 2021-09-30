@@ -11,7 +11,9 @@
                         Sign in to your account to continue
                     </p>
                 </div>
-
+               <span class="errors text-danger p-5">
+                   <?=(isset($errors)) ? $errors : ''; ?>
+               </span>
                 <div class="card">
                     <div class="card-body">
                         <div class="m-sm-4">

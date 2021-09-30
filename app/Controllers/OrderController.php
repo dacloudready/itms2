@@ -8,11 +8,17 @@ use App\Models\OrdersModel;
 
 class OrderController extends BaseController
 {
+	private $contOrder;
+	private $contUser;
+
 	function __construct()
 	{
 		helper('status');
+		$this->contUser = new UsersController();
+		$this->contOrder = new OrdersModel();
 	}
 
+	
 	public function index()
 	{
 		$user = new UsersController();
@@ -33,6 +39,9 @@ class OrderController extends BaseController
 		
 	}
 
+	public function addOrder(){
+		return view('orders/add');
+	}
 
 	public function getOrdersByRequest($requestno)
 	{
@@ -41,5 +50,33 @@ class OrderController extends BaseController
 		return (count($orders)!= 0) ? $orders : NULL;
 	}
 
-	
+	public function viewOrder($id){
+		if(!$this->contUser->isLoggedIn()){
+			return redirect()->to('/login');
+		}
+
+		if(isset($id))
+		{
+			$data = [
+				'orders' => $this->contOrder->find($id),
+			];
+
+			return view('orders/view', $data);
+		}
+	}
+
+	public function closePO(){
+		// if(!$this->contUser->isLoggeIn()){
+		//  	return redirect()->to('/login');
+	    // }
+
+		$data = [
+			'status' =>	'Closed',
+		];
+
+		$order_id = $this->request->getPost('orderID');
+		if($order_id != null){
+			return  ($this->contOrder->update($order_id,$data)) ? 'true' : 'false';
+		} 
+	}
 }
